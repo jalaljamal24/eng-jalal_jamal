@@ -531,88 +531,44 @@ a {
         linear-gradient(140deg, #263b2b, #141f29 70%);
 }
 
-.sport-visual::before,
-.sport-visual::after {
-    position: absolute;
-    width: 150%;
-    height: 1px;
-    background: rgb(217 239 198 / 18%);
-    content: "";
-    transform: rotate(-24deg);
-}
-
-.sport-visual::after {
-    transform: rotate(24deg);
-}
-
-.play-icon {
-    z-index: 1;
+.project-logo {
     display: grid;
-    width: 54px;
-    height: 54px;
-    place-items: center;
-    padding-right: 3px;
-    border: 1px solid rgb(255 255 255 / 25%);
-    border-radius: 50%;
-    background: rgb(16 25 35 / 60%);
-    color: var(--accent);
+    justify-items: center;
+    gap: 5px;
+    text-align: center;
 }
 
-.visual-ball {
-    position: absolute;
-    top: 23px;
-    left: 30px;
-    color: rgb(163 230 53 / 24%);
-    font-size: 5rem;
+.project-logo-mark {
+    width: 88px;
+    height: 88px;
 }
 
-.visual-caption,
-.series-caption {
-    position: absolute;
-    bottom: 16px;
-    color: rgb(237 246 229 / 55%);
+.sport-logo {
+    color: #c9f77a;
+}
+
+.series-logo {
+    color: #d6b5ff;
+}
+
+.project-logo-title {
     direction: ltr;
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
+    font-size: 0.83rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+}
+
+.project-logo-caption {
+    color: rgb(237 246 229 / 60%);
+    direction: ltr;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
 }
 
 .series-visual {
     background:
         radial-gradient(ellipse at 50% 5%, rgb(125 94 178 / 34%), transparent 48%),
         linear-gradient(145deg, #352c46, #1b202b 72%);
-}
-
-.series-screen {
-    position: absolute;
-    display: grid;
-    width: 78px;
-    height: 118px;
-    place-items: center;
-    border: 1px solid rgb(255 255 255 / 16%);
-    border-radius: 7px;
-    background: linear-gradient(160deg, rgb(189 145 226 / 35%), rgb(29 33 48 / 90%));
-    box-shadow: 0 12px 28px rgb(0 0 0 / 24%);
-    color: rgb(255 255 255 / 70%);
-    direction: ltr;
-    font-family: Consolas, monospace;
-    font-size: 0.7rem;
-}
-
-.screen-one {
-    transform: translateX(-72px) rotate(-12deg);
-}
-
-.screen-two {
-    z-index: 1;
-    transform: translateY(-7px);
-}
-
-.screen-three {
-    transform: translateX(72px) rotate(12deg);
-}
-
-.series-caption {
-    color: rgb(235 220 255 / 60%);
 }
 
 .project-info h3 {
@@ -624,6 +580,21 @@ a {
     margin: 0;
     color: var(--muted);
     font-size: 0.8rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    transition: color 180ms ease;
+}
+
+.project-link:hover {
+    color: #c2f66e;
 }
 
 .project-tags {
@@ -663,12 +634,28 @@ a {
 .skill-item {
     display: grid;
     grid-template-columns: 36px 1fr 20px;
-    align-items: center;
+    align-items: start;
     gap: 14px;
-    min-height: 63px;
+    padding-block: 16px;
     border-bottom: 1px solid var(--border);
     color: #dce4e8;
     font-size: 0.88rem;
+}
+
+.skill-copy {
+    display: grid;
+    gap: 3px;
+}
+
+.skill-copy strong {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.skill-copy > span {
+    color: var(--muted);
+    font-size: 0.74rem;
+    line-height: 1.7;
 }
 
 .skill-icon {
@@ -677,11 +664,13 @@ a {
     font-family: Consolas, monospace;
     font-size: 1rem;
     text-align: center;
+    margin-top: 3px;
 }
 
 .skill-arrow {
     color: #74848e;
     font-size: 0.8rem;
+    margin-top: 5px;
 }
 
 .contact-section {
@@ -718,6 +707,39 @@ a {
 .contact-label {
     color: var(--muted);
     font-size: 0.76rem;
+}
+
+.email-address {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--text);
+    direction: ltr;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    font-weight: 700;
+    transition: color 180ms ease;
+}
+
+.email-address:hover {
+    color: var(--accent);
+}
+
+.email-icon {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.instagram-address {
+    color: #d9b8ff;
+}
+
+.instagram-address:hover {
+    color: #e6d2ff;
+}
+
+.instagram-icon {
+    color: #d9b8ff;
+    font-size: 1.25rem;
 }
 
 .phone-number {
