@@ -485,7 +485,7 @@ a {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
 }
 
@@ -571,6 +571,22 @@ a {
         linear-gradient(145deg, #352c46, #1b202b 72%);
 }
 
+.quran-visual {
+    background:
+        radial-gradient(ellipse at 50% 8%, rgb(57 189 156 / 25%), transparent 48%),
+        linear-gradient(145deg, #183a38, #14232b 72%);
+}
+
+.quran-logo {
+    color: #83e1c2;
+}
+
+.quran-logo .project-logo-caption {
+    direction: rtl;
+    letter-spacing: 0;
+    font-size: 0.72rem;
+}
+
 .project-info h3 {
     margin: 0 0 4px;
     font-size: 1.05rem;
@@ -595,6 +611,16 @@ a {
 
 .project-link:hover {
     color: #c2f66e;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 16px;
+}
+
+.project-links .project-link {
+    margin-top: 14px;
 }
 
 .project-tags {
@@ -843,6 +869,10 @@ a {
 
     .skills-layout {
         gap: 45px;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
