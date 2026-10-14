@@ -225,7 +225,7 @@ a {
 .hero-art {
     position: relative;
     display: grid;
-    min-height: 420px;
+    min-height: 580px;
     overflow: hidden;
     place-items: center;
 }
@@ -272,17 +272,46 @@ a {
 }
 
 .avatar {
-    display: grid;
-    width: 76px;
-    height: 76px;
-    place-items: center;
-    margin: 22px auto 10px;
-    border: 1px solid rgb(163 230 53 / 30%);
+    display: block;
+    width: 220px;
+    height: 220px;
+    margin: 22px auto 16px;
+    border: 2px solid rgb(163 230 53 / 70%);
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #30472c, #19261d 72%);
-    color: var(--accent);
-    font-size: 2.4rem;
-    font-weight: 800;
+    box-shadow: 0 0 0 5px rgb(163 230 53 / 9%), 0 10px 28px rgb(0 0 0 / 35%);
+    object-fit: cover;
+    object-position: center 32%;
+    cursor: pointer;
+}
+
+.avatar:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 8px;
+}
+
+@supports (animation-timeline: view()) {
+    .avatar {
+        animation: profile-scroll-shape linear both;
+        animation-timeline: scroll(root block);
+        animation-range: 0% 18%;
+    }
+}
+
+@keyframes profile-scroll-shape {
+    0% {
+        border-radius: 50%;
+        transform: scale(1) rotate(0);
+    }
+
+    50% {
+        border-radius: 38%;
+        transform: scale(1.05) rotate(5deg);
+    }
+
+    100% {
+        border-radius: 50%;
+        transform: scale(1) rotate(0);
+    }
 }
 
 .profile-card h2 {
@@ -851,7 +880,7 @@ a {
     }
 
     .hero-art {
-        min-height: 350px;
+        min-height: 580px;
     }
 
     .art-orbit {
@@ -935,7 +964,7 @@ a {
     }
 
     .hero-art {
-        min-height: 340px;
+        min-height: 580px;
         margin-top: 10px;
     }
 
@@ -1016,6 +1045,10 @@ a {
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
+    }
+
+    .avatar {
+        animation: none;
     }
 
     *,

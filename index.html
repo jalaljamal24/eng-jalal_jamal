@@ -51,7 +51,7 @@
                 <div class="art-orbit orbit-two"></div>
                 <div class="profile-card">
                     <div class="profile-card-top"><span>ملف شخصي</span><span class="card-dots">•••</span></div>
-                    <div class="avatar">ج</div>
+                    <img class="avatar" src="profile-photo.jpeg" alt="صورة جلال جمال" width="220" height="220" role="button" tabindex="0" aria-label="اضغط لتحريك الصورة الشخصية">
                     <h2>جلال جمال</h2>
                     <p>مطور مواقع وتطبيقات</p>
                     <div class="code-window" aria-label="مقتطف برمجي زخرفي">
@@ -342,5 +342,37 @@
             <a class="footer-top" href="#home">العودة للأعلى ↑</a>
         </div>
     </footer>
+    <script>
+        const avatar = document.querySelector(".avatar");
+
+        if (avatar) {
+            let tapAnimation;
+
+            const animateAvatar = () => {
+                if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                    return;
+                }
+
+                tapAnimation?.cancel();
+                tapAnimation = avatar.animate(
+                    [
+                        { transform: "scale(1) rotate(0)", borderRadius: "50%" },
+                        { offset: 0.35, transform: "scale(0.88) rotate(-14deg)", borderRadius: "38%" },
+                        { offset: 0.68, transform: "scale(1.08) rotate(8deg)", borderRadius: "38%" },
+                        { transform: "scale(1) rotate(0)", borderRadius: "50%" }
+                    ],
+                    { duration: 750, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" }
+                );
+            };
+
+            avatar.addEventListener("click", animateAvatar);
+            avatar.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    animateAvatar();
+                }
+            });
+        }
+    </script>
 </body>
 </html>
