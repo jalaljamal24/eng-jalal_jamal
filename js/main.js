@@ -40,6 +40,109 @@ if (navToggle && navLinks) {
     });
 }
 
+const siteSearchForm = document.getElementById("site-search-form");
+const siteSearchInput = document.getElementById("site-search");
+const siteSearchResults = document.getElementById("site-search-results");
+
+if (siteSearchForm && siteSearchInput && siteSearchResults) {
+    const searchableSections = [
+        ["home", "الرئيسية"],
+        ["about", "نبذة عني"],
+        ["experience", "الخبرات"],
+        ["projects", "المشاريع"],
+        ["skills", "المهارات"],
+        ["technology", "التقنيات"],
+        ["contact", "التواصل"]
+    ];
+
+    const normalizeSearchText = (value) => value
+        .normalize("NFKC")
+        .toLocaleLowerCase("ar")
+        .replace(/[\u064B-\u065F\u0670]/g, "")
+        .trim();
+
+    const closeSearchResults = () => {
+        siteSearchResults.hidden = true;
+        siteSearchInput.setAttribute("aria-expanded", "false");
+    };
+
+    const renderSearchResults = () => {
+        const query = normalizeSearchText(siteSearchInput.value);
+        siteSearchResults.replaceChildren();
+
+        if (!query) {
+            closeSearchResults();
+            return [];
+        }
+
+        const matches = searchableSections
+            .map(([id, label]) => {
+                const section = document.getElementById(id);
+                if (!section) return null;
+
+                const content = normalizeSearchText(section.innerText || "");
+                const title = section.querySelector("h1, h2, h3")?.textContent?.trim() || label;
+                const titleMatches = normalizeSearchText(title).includes(query);
+                return content.includes(query) || titleMatches
+                    ? { id, label: title, titleMatches }
+                    : null;
+            })
+            .filter((match) => match !== null)
+            .sort((left, right) => Number(right.titleMatches) - Number(left.titleMatches))
+            .slice(0, 6);
+
+        if (matches.length === 0) {
+            const emptyMessage = document.createElement("div");
+            emptyMessage.className = "site-search-empty";
+            emptyMessage.textContent = "لا توجد نتائج مطابقة";
+            siteSearchResults.append(emptyMessage);
+        } else {
+            for (const match of matches) {
+                const result = document.createElement("a");
+                result.href = `#${match.id}`;
+                result.setAttribute("role", "listitem");
+                result.textContent = match.label;
+                siteSearchResults.append(result);
+            }
+        }
+
+        siteSearchResults.hidden = false;
+        siteSearchInput.setAttribute("aria-expanded", "true");
+        return matches;
+    };
+
+    siteSearchInput.addEventListener("input", renderSearchResults);
+
+    siteSearchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        renderSearchResults();
+        const firstResult = siteSearchResults.querySelector("a");
+        if (firstResult) {
+            window.location.hash = firstResult.hash;
+            closeSearchResults();
+        }
+    });
+
+    siteSearchResults.addEventListener("click", (event) => {
+        if (event.target instanceof Element && event.target.closest("a")) {
+            closeSearchResults();
+        }
+    });
+
+    document.addEventListener("click", (event) => {
+        if (event.target instanceof Node && !siteSearchForm.contains(event.target)) {
+            closeSearchResults();
+        }
+    });
+
+    siteSearchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeSearchResults();
+            siteSearchInput.blur();
+        }
+    });
+}
+
 const profileMenuToggle = document.getElementById("profile-menu-toggle");
 const profileQuickMenu = document.getElementById("profile-quick-menu");
 
