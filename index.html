@@ -20,24 +20,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="stylle.css?v=20261017-sidebar">
+    <link rel="stylesheet" href="stylle.css?v=20261017-header-search">
     <script src="js/theme.js"></script>
 </head>
 <body>
     <header class="site-header">
         <div class="reading-progress" id="reading-progress" aria-hidden="true"><span></span></div>
         <nav class="navigation container" aria-label="التنقل الرئيسي">
-            <a class="brand" href="#home" aria-label="JALAL JAMAL - العودة إلى الرئيسية">
-                <img class="brand-photo" src="profile-photo.jpeg?v=20261017" data-cms-group="الصور" data-cms-label="الصورة الشخصية" data-cms-src-key="profile.image" alt="" aria-hidden="true" width="40" height="40">
-                <span class="brand-name" dir="ltr">JALAL JAMAL</span>
-            </a>
-            <button class="nav-toggle" type="button" aria-label="فتح قائمة التنقل" aria-controls="primary-navigation" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-            <a class="nav-cta" href="#contact">لنتواصل <span aria-hidden="true">↙</span></a>
-            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="تفعيل وضع النهار" title="تفعيل وضع النهار">
-                <span class="theme-toggle-icon" aria-hidden="true">☀</span>
-            </button>
+            <div class="brand-group">
+                <a class="brand" href="#home" aria-label="JALAL JAMAL - العودة إلى الرئيسية">
+                    <img class="brand-photo" src="profile-photo.jpeg?v=20261017" data-cms-group="الصور" data-cms-label="الصورة الشخصية" data-cms-src-key="profile.image" alt="" aria-hidden="true" width="40" height="40">
+                </a>
+                <button class="nav-toggle" type="button" aria-label="فتح قائمة التنقل" aria-controls="primary-navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <a class="brand-name" href="#home" dir="ltr">JALAL JAMAL</a>
+            </div>
+            <form class="site-search" id="site-search-form" role="search">
+                <label class="visually-hidden" for="site-search">ابحث في الموقع</label>
+                <span class="site-search-icon" aria-hidden="true">⌕</span>
+                <input id="site-search" type="search" placeholder="ابحث في الموقع..." autocomplete="off" aria-controls="site-search-results" aria-expanded="false">
+                <div class="site-search-results" id="site-search-results" role="list" aria-label="نتائج البحث" hidden></div>
+            </form>
+            <div class="header-actions">
+                <a class="nav-cta" href="#contact">لنتواصل <span aria-hidden="true">↙</span></a>
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="تفعيل وضع النهار" title="تفعيل وضع النهار">
+                    <span class="theme-toggle-icon" aria-hidden="true">☀</span>
+                </button>
+            </div>
         </nav>
     </header>
     <nav class="nav-links" id="primary-navigation" aria-label="التنقل بين أقسام الموقع">
@@ -531,7 +541,7 @@
         </figure>
     </dialog>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js?v=20261017-sidebar"></script>
+    <script src="js/main.js?v=20261017-header-search-2"></script>
     <script src="js/supabase-config.js"></script>
     <script src="js/site-content.js?v=20261017-profile-menu"></script>
 </body>
