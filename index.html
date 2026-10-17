@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="stylle.css?v=20261017-avatar-action">
+    <link rel="stylesheet" href="stylle.css?v=20261017-sidebar">
     <script src="js/theme.js"></script>
 </head>
 <body>
@@ -34,19 +34,20 @@
             <button class="nav-toggle" type="button" aria-label="فتح قائمة التنقل" aria-controls="primary-navigation" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
-            <div class="nav-links" id="primary-navigation">
-                <a href="#about">نبذة عني</a>
-                <a href="#experience">الخبرات</a>
-                <a href="#projects">المشاريع</a>
-                <a href="#skills">المهارات</a>
-                <a href="#technology">التقنيات</a>
-            </div>
             <a class="nav-cta" href="#contact">لنتواصل <span aria-hidden="true">↙</span></a>
             <button class="theme-toggle" id="theme-toggle" type="button" aria-label="تفعيل وضع النهار" title="تفعيل وضع النهار">
                 <span class="theme-toggle-icon" aria-hidden="true">☀</span>
             </button>
         </nav>
     </header>
+    <nav class="nav-links" id="primary-navigation" aria-label="التنقل بين أقسام الموقع">
+        <a href="#about" aria-label="نبذة عني" title="نبذة عني"><span class="nav-icon" aria-hidden="true">◉</span><span class="nav-label">نبذة عني</span></a>
+        <a href="#experience" aria-label="الخبرات" title="الخبرات"><span class="nav-icon" aria-hidden="true">▤</span><span class="nav-label">الخبرات</span></a>
+        <a href="#projects" aria-label="المشاريع" title="المشاريع"><span class="nav-icon" aria-hidden="true">▧</span><span class="nav-label">المشاريع</span></a>
+        <a href="#skills" aria-label="المهارات" title="المهارات"><span class="nav-icon" aria-hidden="true">✳</span><span class="nav-label">المهارات</span></a>
+        <a href="#technology" aria-label="التقنيات" title="التقنيات"><span class="nav-icon" aria-hidden="true">⌘</span><span class="nav-label">التقنيات</span></a>
+        <a href="#contact" aria-label="تواصل معي" title="تواصل معي"><span class="nav-icon" aria-hidden="true">✉</span><span class="nav-label">تواصل معي</span></a>
+    </nav>
 
     <main>
         <p class="container content-sync-status" id="content-sync-status" role="status" hidden>تعذر تحميل التعديلات المنشورة؛ نعرض محتوى الموقع الأساسي مؤقتًا.</p>
@@ -530,7 +531,7 @@
         </figure>
     </dialog>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js?v=20261017-share-fix"></script>
+    <script src="js/main.js?v=20261017-sidebar"></script>
     <script src="js/supabase-config.js"></script>
     <script src="js/site-content.js?v=20261017-profile-menu"></script>
 </body>
