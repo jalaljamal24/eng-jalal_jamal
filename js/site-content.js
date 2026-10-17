@@ -121,7 +121,10 @@
             const items = value
                 .split(/\r?\n/)
                 .map((item) => item.trim())
-                .filter(Boolean);
+                .filter(Boolean)
+                .filter((item, index, list) =>
+                    list.findIndex((candidate) => candidate.toLocaleLowerCase("ar") === item.toLocaleLowerCase("ar")) === index
+                );
             element.replaceChildren(...items.map((item) => {
                 if (element.hasAttribute("data-cms-logo-grid")) {
                     return createTechLogo(item);

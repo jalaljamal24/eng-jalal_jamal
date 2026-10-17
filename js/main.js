@@ -379,7 +379,7 @@ if ("IntersectionObserver" in window && navigationSections.length > 0) {
 }
 
 const revealTargets = document.querySelectorAll(
-    ".hero-content, .hero-art, .section-heading, .about-layout, .timeline-item, .project-card, .skill-item, .technical-skill-card, .fullstack-note, .contact-card"
+    ".hero-content, .hero-art, .section-heading, .about-layout, .timeline-item, .project-card, .skill-item, .technical-skill-card, .contact-card"
 );
 
 if (
