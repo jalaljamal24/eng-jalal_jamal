@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0b1218">
+    <title>إدارة الموقع | جلال جمال</title>
+    <link rel="icon" type="image/jpeg" href="profile-photo.jpeg?v=20261017">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header class="admin-header">
+        <a class="admin-brand" href="index.html">
+            <span class="admin-brand-mark" aria-hidden="true">ج</span>
+            <span class="admin-brand-copy">
+                <strong>جلال جمال</strong>
+                <small>مساحة إدارة الموقع</small>
+            </span>
+        </a>
+        <div class="admin-header-actions">
+            <span class="admin-live-status is-checking" id="service-status" role="status" aria-live="polite">
+                <span aria-hidden="true"></span>
+                <span id="service-status-text">جارٍ فحص الخدمات</span>
+            </span>
+            <a class="admin-site-link" href="index.html">عرض الموقع <span aria-hidden="true">↗</span></a>
+            <button class="btn btn-outline-light btn-sm" id="logout-button" type="button" hidden>تسجيل الخروج</button>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <div class="admin-alert alert alert-warning" id="connection-warning" role="alert" hidden>
+            <h1 class="h5">إعداد الاتصال غير مكتمل</h1>
+            <p class="mb-2">أضف رابط ومفتاح Supabase العامين إلى الملف <code>js/supabase-config.js</code> ثم أعد تحميل الصفحة.</p>
+            <p class="mb-0">راجع خطوات الإعداد في <code>SUPABASE_SETUP.md</code>. لا تضع مفتاح <code>service_role</code> هنا.</p>
+        </div>
+        <div class="admin-alert alert alert-danger" id="library-warning" role="alert" hidden>
+            تعذر تحميل مكتبة Supabase. تحقق من اتصال الإنترنت ثم أعد تحميل الصفحة.
+        </div>
+
+        <section class="login-card" id="login-panel" aria-labelledby="login-title">
+            <div class="login-visual" aria-hidden="true">
+                <div class="login-orbit login-orbit-one"></div>
+                <div class="login-orbit login-orbit-two"></div>
+                <div class="login-emblem">ج</div>
+                <span class="login-visual-caption">مساحتك.. أعمالك.. بهويتك</span>
+            </div>
+            <div class="login-content">
+                <div class="admin-kicker"><span class="secure-mark" aria-hidden="true">✓</span> بوابة آمنة</div>
+                <h1 id="login-title">مرحبًا بعودتك</h1>
+                <p class="login-intro">سجّل الدخول لإدارة محتوى موقعك وتحديثه بسهولة.</p>
+                <button class="google-login" id="google-login-button" type="button">
+                    <span class="google-mark" aria-hidden="true">G</span>
+                    المتابعة باستخدام Google
+                    <span class="google-arrow" aria-hidden="true">←</span>
+                </button>
+                <p class="form-status" id="login-status" role="status" aria-live="polite"></p>
+                <div class="login-footnote"><span aria-hidden="true">◇</span> دخول مخصص لحسابات الإدارة المعتمدة</div>
+                <div class="admin-authorization" id="authorization-help" hidden>
+                    <p>لمنح هذا الحساب صلاحية الإدارة، انسخ أمر SQL وشغّله مرة واحدة في Supabase SQL Editor:</p>
+                    <code id="authorization-sql" dir="ltr"></code>
+                    <button class="btn btn-outline-light btn-sm" id="copy-authorization" type="button">نسخ أمر الصلاحية</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="editor-panel" id="editor-panel" aria-labelledby="editor-title" hidden>
+            <div class="editor-heading">
+                <div>
+                    <div class="admin-kicker"><span class="secure-mark" aria-hidden="true">✓</span> إدارة المحتوى</div>
+                    <h1 id="editor-title">محتوى الموقع</h1>
+                    <p>عدّل النصوص والروابط، أو اختر صورًا جديدة. التغييرات تظهر للزوار بعد الحفظ.</p>
+                </div>
+                <a class="btn btn-outline-light" href="index.html" target="_blank" rel="noopener noreferrer">معاينة الموقع</a>
+            </div>
+
+            <form id="content-form">
+                <div class="editor-overview" aria-label="ملخص محتوى الموقع">
+                    <article class="overview-card">
+                        <span class="overview-icon" aria-hidden="true">✦</span>
+                        <span class="overview-label">حقول قابلة للتعديل</span>
+                        <strong id="fields-count">0</strong>
+                    </article>
+                    <article class="overview-card">
+                        <span class="overview-icon" aria-hidden="true">▦</span>
+                        <span class="overview-label">أقسام الموقع</span>
+                        <strong id="groups-count">0</strong>
+                    </article>
+                    <article class="overview-card">
+                        <span class="overview-icon" aria-hidden="true">▧</span>
+                        <span class="overview-label">حقول الصور</span>
+                        <strong id="images-count">0</strong>
+                    </article>
+                </div>
+                <div class="editor-toolbar">
+                    <label for="field-search">ابحث في حقول الموقع</label>
+                    <div class="editor-search">
+                        <span aria-hidden="true">⌕</span>
+                        <input class="form-control" id="field-search" type="search" placeholder="مثال: نبذة، مشروع، رابط..." autocomplete="off">
+                    </div>
+                    <p id="search-results" aria-live="polite"></p>
+                </div>
+                <div id="editor-fields" class="editor-fields"></div>
+                <p class="empty-search" id="empty-search" hidden>لا توجد حقول تطابق بحثك.</p>
+                <div class="editor-actions">
+                    <p class="form-status" id="save-status" role="status" aria-live="polite"></p>
+                    <button class="btn btn-primary btn-lg" id="save-button" type="submit"><span aria-hidden="true">✓</span> حفظ التعديلات</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer class="admin-footer">© <span id="current-year"></span> جلال جمال <span aria-hidden="true">·</span> لوحة إدارة آمنة</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/admin.js?v=20261017-hero-copy"></script>
+</body>
+</html>
