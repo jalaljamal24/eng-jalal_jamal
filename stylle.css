@@ -1973,28 +1973,20 @@ button:focus-visible {
 
 .instagram-icon {
     color: #d9b8ff;
-    font-size: 1.25rem;
 }
 
-.phone-number {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text);
-    direction: ltr;
-    font-size: clamp(1.45rem, 5vw, 1.9rem);
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    transition: color 180ms ease;
+.social-icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
 }
 
-.phone-number:hover {
-    color: var(--accent);
+.youtube-address {
+    color: #ff6b65;
 }
 
-.phone-icon {
-    color: var(--accent);
-    font-size: 1.25rem;
+.youtube-address:hover {
+    color: #ff817c;
 }
 
 .contact-actions {
@@ -2659,6 +2651,15 @@ button:focus-visible {
 
 [data-theme="light"] .instagram-address:hover {
     color: #56317f;
+}
+
+[data-theme="light"] .youtube-address,
+[data-theme="light"] .youtube-icon {
+    color: #c5221f;
+}
+
+[data-theme="light"] .youtube-address:hover {
+    color: #a11b18;
 }
 
 [data-theme="light"] .site-footer {
